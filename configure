@@ -1342,11 +1342,14 @@ fi
 
 fi
 if test "$found" = "no"; then
-  for dir in /usr/local /usr/X11* /usr/pkg /usr/contrib /usr; do
+  for dir in /usr/local /usr/pkg /usr/contrib /usr; do
     
 ac_safe=`echo "$dir/include/tcl.h" | sed 'y%./+-%__p_%'`
 echo $ac_n "checking for $dir/include/tcl.h""... $ac_c" 1>&6
 echo "configure:1350: checking for $dir/include/tcl.h" >&5
+ac_safe=`echo "$dir/include/tcl/tcl.h" | sed 'y%./+-%__p_%'`
+echo $ac_n "checking for $dir/include/tcl/tcl.h""... $ac_c" 1>&6
+echo "configure:1348: checking for $dir/include/tcl/tcl.h" >&5
 if eval "test \"`echo '$''{'ac_cv_file_$ac_safe'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -1369,7 +1372,7 @@ else
 fi
 
     if test "$found" = "yes"; then
-      TARGET_TCL_INC="-I$dir/include"
+      TARGET_TCL_INC="-I$dir/include/tcl"
       break
     fi
   done
