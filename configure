@@ -19486,7 +19486,7 @@ else
   OS_WIN=0
   tclsubdir=unix
 fi
-TARGET_CFLAGS="$TARGET_CFLAGS -DOS_UNIX=$OS_UNIX -DOS_WIN=$OS_WIN"
+TARGET_CFLAGS="-m32 $TARGET_CFLAGS -DOS_UNIX=$OS_UNIX -DOS_WIN=$OS_WIN"
 
 
 
@@ -19983,9 +19983,9 @@ fi
 fi
 if test "$found" = "no"; then
   for dir in /usr/local /usr/X11 /usr/X11R6 /usr/pkg /usr/contrib /usr; do
-    as_ac_File=`echo "ac_cv_file_$dir/include/tcl.h" | $as_tr_sh`
-echo "$as_me:$LINENO: checking for $dir/include/tcl.h" >&5
-echo $ECHO_N "checking for $dir/include/tcl.h... $ECHO_C" >&6
+    as_ac_File=`echo "ac_cv_file_$dir/include/tcl/tcl.h" | $as_tr_sh`
+echo "$as_me:$LINENO: checking for $dir/include/tcl/tcl.h" >&5
+echo $ECHO_N "checking for $dir/include/tcl/tcl.h... $ECHO_C" >&6
 if eval "test \"\${$as_ac_File+set}\" = set"; then
   echo $ECHO_N "(cached) $ECHO_C" >&6
 else
@@ -19993,7 +19993,7 @@ else
   { { echo "$as_me:$LINENO: error: cannot check for file existence when cross compiling" >&5
 echo "$as_me: error: cannot check for file existence when cross compiling" >&2;}
    { (exit 1); exit 1; }; }
-if test -r "$dir/include/tcl.h"; then
+if test -r "$dir/include/tcl/tcl.h"; then
   eval "$as_ac_File=yes"
 else
   eval "$as_ac_File=no"
@@ -20006,7 +20006,7 @@ if test `eval echo '${'$as_ac_File'}'` = yes; then
 fi
 
     if test "$found" = "yes"; then
-      TARGET_TCL_INC="-I$dir/include"
+      TARGET_TCL_INC="-I$dir/include/tcl -DUSE_INTERP_RESULT"
       break
     fi
   done
